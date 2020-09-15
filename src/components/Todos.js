@@ -76,7 +76,7 @@ const Todos = () => {
   useEffect(() => {
     // enregistre dans localStorage la liste todos
     localStorage.setItem("myTodosListe", JSON.stringify(todos))
-  }, [todos.length]) 
+  }, [todos]) 
   
   /*
   useEffect(() => {
