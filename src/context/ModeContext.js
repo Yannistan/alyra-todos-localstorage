@@ -1,4 +1,4 @@
-import React, {useState, ueEffect, createContext, useEffect} from 'react'
+import React, {useState, createContext, useEffect} from 'react'
 
 export const ModeContext = createContext()
 

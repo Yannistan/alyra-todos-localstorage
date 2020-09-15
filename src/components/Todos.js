@@ -72,10 +72,17 @@ const Todos = () => {
 
   const completedCount = todos.filter((el) => el.isCompleted).length
 
+  
   useEffect(() => {
-    // enregistredans localStorage la liste todos
+    // enregistre dans localStorage la liste todos
     localStorage.setItem("myTodosListe", JSON.stringify(todos))
+  }, [todos.length]) 
+  
+  /*
+  useEffect(() => {
+    localStorage.setItem("myTodosCompleted", JSON.stringify(todos))
   }, [todos.length])
+  */
 
   return (
     <main>
