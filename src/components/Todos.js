@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import TodosList from "./TodosList"
 import SelectTodos from "./SelectTodos"
 import AddTodoForm from "./AddTodoForm"
-import { v4 as uuidv4 } from "uuid"
+import { parse, v4 as uuidv4 } from "uuid"
 
 const initialTodos = [
   {
@@ -23,7 +23,12 @@ const initialTodos = [
 ]
 
 const Todos = () => {
-  const [todos, setTodos] = useState(initialTodos)
+  const getLocalStorage = () => {
+    return JSON.parse(localStorage.getItem("myTododsList")) || initialTodos
+  }
+  
+  const [todos, setTodos] = useState(getLocalStorage)
+
   const [filter, setFilter] = useState("all")
 
   const addTodo = (text) => {
@@ -60,7 +65,18 @@ const Todos = () => {
     return true
   })
 
+  useEffect(() => {
+    console.log("changement")
+    document.title = todos.length ? `Vous avez ${todos.length} tâches à faire`: "Que devez vous faire aujourd'hui?"
+  }, [todos.length])
+
   const completedCount = todos.filter((el) => el.isCompleted).length
+
+  useEffect(() => {
+    // enregistredans localStorage la liste todos
+    localStorage.setItem("myTodosListe", JSON.stringify(todos))
+  }, [todos.length])
+
   return (
     <main>
       <h2 className="text-center">
