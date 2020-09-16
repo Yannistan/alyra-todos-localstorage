@@ -24,7 +24,7 @@ const initialTodos = [
 
 const Todos = () => {
   const getLocalStorage = () => {
-    return JSON.parse(localStorage.getItem("myTododsList")) || initialTodos
+    return JSON.parse(localStorage.getItem("myTodosListe")) || initialTodos
   }
   
   const [todos, setTodos] = useState(getLocalStorage)
